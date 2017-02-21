@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2DE4F554-4B27-4583-98BC-6772D0652B81}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Foosbot.Common</RootNamespace>
+    <AssemblyName>Foosbot.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Emgu.CV, Version=3.0.0.2157, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Emgu\emgucv-windows-universal 3.0.0.2157\bin\Emgu.CV.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.UI, Version=3.0.0.2157, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Emgu\emgucv-windows-universal 3.0.0.2157\bin\Emgu.CV.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.Util, Version=3.0.0.2157, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Emgu\emgucv-windows-universal 3.0.0.2157\bin\Emgu.Util.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Contracts\IDateTime.cs" />
+    <Compile Include="Data\Configuration.cs" />
+    <Compile Include="Data\ConfigurationExtensions.cs" />
+    <Compile Include="Contracts\IInitializable.cs" />
+    <Compile Include="Contracts\ITransformation.cs" />
+    <Compile Include="Contracts\IWorkingObserver.cs" />
+    <Compile Include="Contracts\IPublisher.cs" />
+    <Compile Include="Data\TransformAgent.cs" />
+    <Compile Include="Data\TransformData.cs" />
+    <Compile Include="Enums\eMarks.cs" />
+    <Compile Include="Exceptions\CalibrationException.cs" />
+    <Compile Include="Exceptions\ConfigurationException.cs" />
+    <Compile Include="Exceptions\InitializationException.cs" />
+    <Compile Include="Logs\LogTag.cs" />
+    <Compile Include="Multithreading\BackgroundFlow.cs" />
+    <Compile Include="Contracts\IFlow.cs" />
+    <Compile Include="Multithreading\Observer.cs" />
+    <Compile Include="Multithreading\Publisher.cs" />
+    <Compile Include="Data\Configuration.Names.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Protocols\DefinableCartesianCoordinate.cs" />
+    <Compile Include="Protocols\BallCoordinates.cs" />
+    <Compile Include="Enums\eCallibrationMark.cs" />
+    <Compile Include="Enums\eLinearMove.cs" />
+    <Compile Include="Enums\eRod.cs" />
+    <Compile Include="Enums\eRotationalMove.cs" />
+    <Compile Include="Enums\eStatisticsKey.cs" />
+    <Compile Include="Enums\eUnits.cs" />
+    <Compile Include="Protocols\RodAction.cs" />
+    <Compile Include="Protocols\RodActionPublisher.cs" />
+    <Compile Include="Protocols\Vector2D.cs" />
+    <Compile Include="Diagnostics\Marks.cs" />
+    <Compile Include="Diagnostics\Statistics.cs" />
+    <Compile Include="Extensions\PointFExtensions.cs" />
+    <Compile Include="Wrappers\DateTimeWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\External\EasyLog\EasyLog\EasyLog.csproj">
+      <Project>{1c39dd88-9b43-4b0f-8cbc-226470b761a6}</Project>
+      <Name>EasyLog</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
